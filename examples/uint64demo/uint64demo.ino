@@ -1,4 +1,8 @@
-// PriUint64.h provides a PriUint64 class template that makes uint64_t printable.
+/**
+ * @file
+ *
+ * PriUint64.h provides a PriUint64 class template that makes uint64_t printable.
+ */
 
 #include <PriUint64.h>
 
@@ -26,5 +30,4 @@ setup()
 
 void
 loop()
-{
-}
+{}

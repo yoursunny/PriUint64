@@ -1,12 +1,20 @@
-// PriUint64.h can integrate with Streaming 5 library.
-// To enable integration, include Streaming.h before PriUint64.h.
-//
-// The baseline integration only overloads operator<< for uint64_t. On platforms where
-// <type_traits> header is available, PriUint64.h also rewrites _HEX _DEC _OCT _BIN macros
-// so that they can work with uint64_t. `#define PRIUINT64_OVERRIDE_STREAMING_BASED` forces
-// this rewriting, but it would cause compile error if <type_traits> is unavailable.
+/**
+ * @file
+ *
+ * PriUint64.h can integrate with Streaming 5 library.
+ * Streaming is available at: http://arduiniana.org/libraries/streaming/
+ * To enable integration, include Streaming.h before PriUint64.h.
+ *
+ * The baseline integration only overloads operator<< for uint64_t. On platforms where
+ * <type_traits> header is available, PriUint64.h also rewrites _HEX _DEC _OCT _BIN macros
+ * so that they can work with uint64_t.
+ *
+ * `#define PRIUINT64_OVERRIDE_STREAMING_BASED` forces this rewriting, but it would cause
+ * compile error if <type_traits> is unavailable.
+ */
 
-#include <Streaming.h> // http://arduiniana.org/libraries/streaming/
+#include <Streaming.h>
+
 #include <PriUint64.h>
 
 void
@@ -43,5 +51,4 @@ setup()
 
 void
 loop()
-{
-}
+{}
