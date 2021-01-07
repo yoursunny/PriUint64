@@ -1,5 +1,7 @@
 # PriUint64.h for Arduino
 
+[![GitHub Workflow status](https://img.shields.io/github/workflow/status/yoursunny/PriUint64/build?style=flat)](https://github.com/yoursunny/PriUint64/actions) [![GitHub code size](https://img.shields.io/github/languages/code-size/yoursunny/PriUint64?style=flat)](https://github.com/yoursunny/PriUint64)
+
 This library allows printing `uint64_t` in Arduino.
 
 ```
@@ -38,3 +40,7 @@ void setup() {
 void loop() {
 }
 ```
+
+Notice:
+This integration only supports Streaming version 5.
+Streaming version 6 is not yet supported.
