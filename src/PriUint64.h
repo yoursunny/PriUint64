@@ -8,7 +8,7 @@
 namespace priuint64 {
 namespace detail {
 
-size_t
+inline size_t
 print(Print& p, uint64_t n, uint64_t base)
 {
   char buf[8 * sizeof(uint64_t) + 1];
