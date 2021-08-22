@@ -1,9 +1,12 @@
 name: build
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: arduino/setup-arduino-cli@v1.1.1
       - name: install Arduino cores and libraries
@@ -12,17 +15,22 @@ jobs:
           arduino-cli core update-index --additional-urls $ARDUINO_CORE_URI
           arduino-cli core install arduino:avr esp8266:esp8266 esp32:esp32 adafruit:nrf52 --additional-urls $ARDUINO_CORE_URI
           arduino-cli lib update-index
-          arduino-cli lib install Streaming@5.0.0
+          arduino-cli lib install Streaming
         env:
           ARDUINO_CORE_URI: https://arduino.esp8266.com/stable/package_esp8266com_index.json,https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json,https://www.adafruit.com/package_adafruit_index.json
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'
       - name: install dependencies
         run: |
+          sudo apt-get install clang-format-8
           python -m pip install --upgrade pip
           pip install adafruit-nrfutil esptool
       - uses: actions/checkout@v2
+      - name: check code style
+        run: |
+          mk/format-code.sh
+          [[ $(git status --porcelain | tee /dev/stderr | wc -l) -eq 0 ]]
       - name: link library
         run: |
           mkdir -p $HOME/Arduino/libraries
