@@ -4,10 +4,12 @@
 
 This library allows printing `uint64_t` in Arduino.
 
-```
+```cpp
 #include <PriUint64.h>
 
-void setup() {
+void
+setup()
+{
   Serial.begin();
   Serial.println();
 
@@ -15,32 +17,34 @@ void setup() {
   Serial.println(PriUint64<HEX>(x));
 }
 
-void loop() {
+void
+loop()
+{
 }
 ```
 
-## Streaming 5 Integration
+## Streaming 6 Integration
 
-This library can integrate with [Streaming 5](http://arduiniana.org/libraries/streaming/).
+This library can integrate with [Streaming 6](https://github.com/janelia-arduino/Streaming) library.
 To enable this integration, `#include <Streaming.h>` before including this library.
 
-```
+```cpp
 #include <Streaming.h>
 #include <PriUint64.h>
 
-void setup() {
+void
+setup()
+{
   Serial.begin();
   Serial.println();
 
   uint64_t x = 0x9aa567b200;
-  Serial << x << endl; // available on all platforms
-  Serial << _HEX(x) << endl; // macros available on ESP8266 and ESP32 only
+  Serial << x << endl;
+  Serial << _HEX(x) << endl;
 }
 
-void loop() {
+void
+loop()
+{
 }
 ```
-
-Notice:
-This integration only supports Streaming version 5.
-Streaming version 6 is not yet supported.
