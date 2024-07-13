@@ -54,3 +54,8 @@ jobs:
           libraries: |
             - source-path: ./
             - name: Streaming
+  publish:
+    runs-on: ubuntu-24.04
+    needs: [format, build]
+    steps:
+      - run: true
