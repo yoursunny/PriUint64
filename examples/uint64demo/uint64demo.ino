@@ -7,8 +7,7 @@
 #include <PriUint64.h>
 
 void
-demo(uint64_t x)
-{
+demo(uint64_t x) {
   Serial.println(PriUint64<BIN>(x));
   Serial.println(PriUint64<OCT>(x));
   Serial.println(PriUint64<DEC>(x));
@@ -17,8 +16,7 @@ demo(uint64_t x)
 }
 
 void
-setup()
-{
+setup() {
   Serial.begin(115200);
   Serial.println();
 
@@ -29,5 +27,4 @@ setup()
 }
 
 void
-loop()
-{}
+loop() {}

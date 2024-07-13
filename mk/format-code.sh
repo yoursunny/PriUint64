@@ -1,5 +1,6 @@
 #!/bin/bash
-set -eo pipefail
+set -euo pipefail
 cd "$( dirname "${BASH_SOURCE[0]}" )"/..
 
-clang-format-11 -i -style=file src/*.h examples/*/*.ino
+find -name '*.h' -or -name '*.[hc]pp' -or -name '*.ino' | \
+  xargs clang-format-15 -i -style=file

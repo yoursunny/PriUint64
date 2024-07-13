@@ -9,8 +9,7 @@ namespace priuint64 {
 namespace detail {
 
 inline size_t
-print(Print& p, uint64_t n, uint64_t base)
-{
+print(Print& p, uint64_t n, uint64_t base) {
   char buf[8 * sizeof(uint64_t) + 1];
   char* str = &buf[sizeof(buf) - 1];
   *str = '\0';
@@ -35,15 +34,12 @@ print(Print& p, uint64_t n, uint64_t base)
  * @endcode
  */
 template<uint64_t base>
-class PriUint64 : public Printable
-{
+class PriUint64 : public Printable {
 public:
   explicit PriUint64(uint64_t value)
-    : m_value(value)
-  {}
+    : m_value(value) {}
 
-  size_t printTo(Print& p) const override
-  {
+  size_t printTo(Print& p) const override {
     return detail::print(p, m_value, base);
   }
 
@@ -59,15 +55,13 @@ using priuint64::PriUint64;
 
 /** @brief Print uint64_t as decimal. */
 inline Print&
-operator<<(Print& p, uint64_t x)
-{
+operator<<(Print& p, uint64_t x) {
   return p << PriUint64<DEC>(x);
 }
 
 template<>
 inline Print&
-operator<<(Print& obj, const _BASED<uint64_t>& arg)
-{
+operator<<(Print& obj, const _BASED<uint64_t>& arg) {
   priuint64::detail::print(obj, arg.val, static_cast<uint64_t>(arg.base));
   return obj;
 }

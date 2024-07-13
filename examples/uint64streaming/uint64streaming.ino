@@ -11,8 +11,7 @@
 #include <PriUint64.h>
 
 void
-demo(uint64_t x)
-{
+demo(uint64_t x) {
   Serial << x << endl;
   Serial << _HEX(x) << endl;
   Serial << _DEC(x) << endl;
@@ -27,8 +26,7 @@ demo(uint64_t x)
 }
 
 void
-setup()
-{
+setup() {
   Serial.begin(115200);
   Serial.println();
 
@@ -46,5 +44,4 @@ setup()
 }
 
 void
-loop()
-{}
+loop() {}
