@@ -28,6 +28,8 @@ demo(uint64_t x) {
 void
 setup() {
   Serial.begin(115200);
+  while (!Serial) {
+  }
   Serial.println();
 
   demo(0x0);
